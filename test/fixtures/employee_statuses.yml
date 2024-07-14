@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  job: one
+  department: one
+  salary: one
+  manager: one
+  start_date: 2024-07-14 21:42:58
+  finish_date: 2024-07-14 21:42:58
+  address: one
+  record_replaced_date: 2024-07-14 21:42:58
+  record_ended_date: 2024-07-14 21:42:58
+
+two:
+  employee: two
+  job: two
+  department: two
+  salary: two
+  manager: two
+  start_date: 2024-07-14 21:42:58
+  finish_date: 2024-07-14 21:42:58
+  address: two
+  record_replaced_date: 2024-07-14 21:42:58
+  record_ended_date: 2024-07-14 21:42:58
