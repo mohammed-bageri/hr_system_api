@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update destroy ]
+  before_action :set_user, only: %i[show update destroy]
 
   # GET /users
   def index
-    @users = User.all
+    page = params[:page] || 1
+    per = params[:per] || 20
+    @users = User.page(page).per(per)
 
-    render json: @users
+    render json: { data: @users.as_api_response(:public), total_pages: @users.total_pages }
+    # respond_with(@users, api_template: :public, root: :users)
   end
 
   # GET /users/1
@@ -39,13 +42,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :role)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :role)
+  end
 end
